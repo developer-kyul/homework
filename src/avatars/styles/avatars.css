@@ -1,1 +1,86 @@
 /* 여기에 스타일을 구현해 주세요 */
+/* ===== 기본 세팅 ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 전체 아바타 박스 (가운데 모양 내기용) */
+.avatar-wrapper {
+  width: 316px; /* 64 * 4 + 20 * 3 = 316 */
+  margin: 80px auto;
+}
+
+/* 리스트 기본값 제거 */
+.avatar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== float 사용해서 가로·세로 배치 ===== */
+
+.avatar-item {
+  float: left; /* 가로로 나열 */
+  width: 64px;
+  height: 64px;
+  margin-right: 20px; /* 가로 간격 20px */
+  margin-bottom: 20px; /* 세로 간격 20px */
+}
+
+/* 한 줄에 4개이므로 4번째마다 오른쪽 여백 제거 */
+.avatar-item:nth-child(4n) {
+  margin-right: 0;
+}
+
+/* float clearfix */
+.avatar-list::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ===== 아바타(원형) ===== */
+
+.avatar {
+  position: relative; /* 상태 점 기준 */
+  width: 64px;
+  height: 64px;
+  margin: 0;
+}
+
+/* 이미지를 원형으로 잘라주기 */
+.avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ===== 상태 점 (position 사용) ===== */
+
+/* 상태 점: 위 레이어 */
+
+.avatar-status {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  z-index: 1;
+}
+
+/* 초록색 온라인 상태 */
+.status-online {
+  background-color: #4cfe88;
+}
+
+/* 회색 오프라인 상태 */
+.status-offline {
+  background-color: #dbdbdb;
+}
